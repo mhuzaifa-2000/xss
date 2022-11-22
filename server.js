@@ -10,7 +10,7 @@ const postedComments = [
   {
     username: "Huzaifa",
     comment:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nostrum accusantium itaque! Repellat, perspiciatis eligendi. Commodi, possimus tenetur ducimus eligendi explicabo minus nobis natus iure voluptates magnam? Est, iure eaque.",
+      "This is a comment!",
   },
 ];
 
@@ -27,6 +27,7 @@ function getHtmlWithComments(comments) {
     *{
         margin: 0;
         box-sizing: border-box;
+        font-family: sans-serif;
     }
     .page-container{
         margin-top: 50px;
@@ -42,8 +43,6 @@ function getHtmlWithComments(comments) {
         flex-direction: column;
     }
     h1{
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        font-style: italic;
         font-weight: bold;
         margin-bottom: 20px;
     }
@@ -58,10 +57,10 @@ function getHtmlWithComments(comments) {
     .search-btn{
         color:#ffffff;
         font-weight: bold;
-        background-color: blueviolet;
+        background-color: blue;
         border: none;
         height: 30px;
-        width: 300px;
+        width: 150px;
         border-radius: 5px;
         cursor: pointer;
         transition: transform 0.1s ease-in;
@@ -71,24 +70,27 @@ function getHtmlWithComments(comments) {
         transform: scale(1.1);
     }
     .comment{
-        border: 2px solid red;
+        border: 1.5px solid red;
         padding: 10px;
         width: 50%;
         margin-top: 20px;
+        border-radius: 5px;
     }
     .search[name="comment"]{
         width: 500px;
         height: 100px;
     }
     .comment-text{
-        font-family: sans-serif;
         color: rgb(104, 102, 102);
         margin-top: 10px;
     }
+    input[type=text], textarea {
+      border-style: inset;
+      border-width: 1px;
+  }
 </style>
 <body>
     <script>
-
         var API_KEY = "12312J31H2HASD922131231323#$@@2323";
     </script>
     <div class="page-container">
@@ -117,7 +119,7 @@ const sendPage = (res) => {
   const comments = postedComments.map((comment) => {
     if (comment.comment || comment.username) {
       return `<div class="comment">
-        <h3 style="color: rgb(143, 20, 20);">${comment.username}</h3>
+        <h3 style="color: red;">${comment.username}</h3>
         <p class="comment-text">${comment.comment}</p>
       </div>`;
     }
@@ -142,5 +144,5 @@ app.post("/", (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log("Server is ready to receive requests");
+  console.log("Server is ready to receive requests!");
 });
